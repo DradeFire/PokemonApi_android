@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Navigation">
+
+        <menu>
+            <item
+                android:icon="@drawable/ic_baseline_search"
+                android:id="@+id/nav_to_find_pokemon"
+                android:title="Find pokemon by name"/>
+            <item
+                android:icon="@drawable/ic_baseline_random"
+                android:id="@+id/nav_to_random_pokemon"
+                android:title="Random pokemon" />
+        </menu>
+    </item>
+</menu>

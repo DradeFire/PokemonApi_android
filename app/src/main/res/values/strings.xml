@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Pokemons</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="abilities">Abilities</string>
+    <string name="random_pokemon">Random pokemon</string>
+    <string name="find_pokemon_by_name">Find pokemon by name</string>
+    <string name="favorites_pokemons">Favorite pokemons</string>
+    <string name="pokemon">Pokemon</string>
+    <string name="find">Find</string>
+    <string name="successful_added_to_favorites">Успешно добавлен в избранные!</string>
+</resources>

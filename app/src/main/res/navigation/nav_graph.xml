@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/findPokemonByNameFragment"
+        android:name="com.example.pokemons.fragments.fragment.finding.FindPokemonByNameFragment"
+        android:label="Поиск покемонов"
+        tools:layout="@layout/fragment_find_pokemon_by_name" >
+        <action
+            android:id="@+id/action_findPokemonByNameFragment_to_listOfFavoritesPokemonsFragment"
+            app:destination="@id/listOfFavoritesPokemonsFragment" />
+        <action
+            android:id="@+id/action_findPokemonByNameFragment_to_randomPokemonsFragment"
+            app:destination="@id/randomPokemonsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.pokemons.fragments.fragment.start.StartFragment"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.pokemons.fragments.fragment.menu.MainMenuFragment"
+        android:label="Главное меню"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_findPokemonByNameFragment"
+            app:destination="@id/findPokemonByNameFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_randomPokemonsFragment"
+            app:destination="@id/randomPokemonsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/randomPokemonsFragment"
+        android:name="com.example.pokemons.fragments.fragment.random.RandomPokemonsFragment"
+        android:label="Случайный покемон"
+        tools:layout="@layout/fragment_random_pokemons" >
+        <action
+            android:id="@+id/action_randomPokemonsFragment_to_listOfFavoritesPokemonsFragment"
+            app:destination="@id/listOfFavoritesPokemonsFragment" />
+        <action
+            android:id="@+id/action_randomPokemonsFragment_to_findPokemonByNameFragment"
+            app:destination="@id/findPokemonByNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfFavoritesPokemonsFragment"
+        android:name="com.example.pokemons.fragments.fragment.favorites.ListOfFavoritesPokemonsFragment"
+        android:label="Избранные покемоны"
+        tools:layout="@layout/fragment_list_of_favorites_pokemons" >
+        <action
+            android:id="@+id/action_listOfFavoritesPokemonsFragment_to_randomPokemonsFragment"
+            app:destination="@id/randomPokemonsFragment" />
+        <action
+            android:id="@+id/action_listOfFavoritesPokemonsFragment_to_findPokemonByNameFragment"
+            app:destination="@id/findPokemonByNameFragment" />
+    </fragment>
+</navigation>
