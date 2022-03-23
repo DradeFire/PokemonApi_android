@@ -8,4 +8,11 @@
     <string name="pokemon">Pokemon</string>
     <string name="find">Find</string>
     <string name="successful_added_to_favorites">Успешно добавлен в избранные!</string>
+    <string name="name">Name</string>
+    <string name="specialattack">SpecialAttack</string>
+    <string name="specialdefense">SpecialDefense</string>
+    <string name="speed">Speed</string>
+    <string name="defense">Defense</string>
+    <string name="attack">Attack</string>
+    <string name="hp">Hp</string>
 </resources>

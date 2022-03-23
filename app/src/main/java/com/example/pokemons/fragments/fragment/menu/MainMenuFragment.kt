@@ -35,17 +35,15 @@ class MainMenuFragment @Inject constructor() : Fragment() {
     @Inject
     fun startAnimation(){
         val animScaleX = ObjectAnimator
-            .ofFloat(binding.imLogoMainMenu,"scaleX", 1f, 1.02f,1f)
-        animScaleX.apply {
-            duration = 1500
-            repeatCount = Animation.INFINITE
-        }
+            .ofFloat(binding.imLogoMainMenu,"scaleX", 1f, 1.02f,1f).apply {
+                duration = 1500
+                repeatCount = Animation.INFINITE
+            }
 
         val animScaleY = ObjectAnimator
-            .ofFloat(binding.imLogoMainMenu,"scaleY", 1f, 1.02f,1f)
-        animScaleY.apply {
-            duration = 1500
-            repeatCount = Animation.INFINITE
+            .ofFloat(binding.imLogoMainMenu,"scaleY", 1f, 1.02f,1f).apply {
+                duration = 1500
+                repeatCount = Animation.INFINITE
         }
 
         animScaleX.start()

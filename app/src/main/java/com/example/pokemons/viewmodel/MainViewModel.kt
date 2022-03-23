@@ -1,6 +1,8 @@
 package com.example.pokemons.viewmodel
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pokemons.api.repository.Repository
@@ -12,10 +14,15 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(context: Context): ViewModel() {
+@SuppressLint("StaticFieldLeak")
+class MainViewModel @Inject constructor(private val context: Context): ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
-    private val repository: Repository by lazy { Repository(PokemonsDatabase.getDatabase(context)) }
+    private val compositeDisposable by lazy {
+        CompositeDisposable()
+    }
+    private val repository: Repository by lazy {
+        Repository(PokemonsDatabase.getDatabase(context))
+    }
     val myResponsePokemon: MutableLiveData<PokemonJsonModel> = MutableLiveData()
     val listOfPokemons: MutableLiveData<List<PokemonEntity>> = MutableLiveData()
 
@@ -24,7 +31,14 @@ class MainViewModel @Inject constructor(context: Context): ViewModel() {
             repository.getPokemonFromServerByName(name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { response -> myResponsePokemon.value = response }
+                .subscribe({ response ->
+                        myResponsePokemon.value = response
+                           }, { error ->
+                    val mes = error.localizedMessage
+                    if(mes == "HTTP 404 ")
+                        Toast.makeText(context, "Такого Покемона не существует!", Toast.LENGTH_SHORT).show()
+                })
+
         )
     }
 
@@ -33,7 +47,10 @@ class MainViewModel @Inject constructor(context: Context): ViewModel() {
             repository.getlistOfPokemonsFromDB()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { response -> listOfPokemons.postValue(response) }
+                .subscribe({ response -> listOfPokemons.postValue(response) },
+                    {
+                            Toast.makeText(context, "Неизвестная ошибка!", Toast.LENGTH_SHORT).show()
+                    })
         )
     }
 
@@ -42,7 +59,10 @@ class MainViewModel @Inject constructor(context: Context): ViewModel() {
             repository.addPokemonToDB(pokemon)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { }
+                .subscribe({ },
+                    {
+                        Toast.makeText(context, "Неизвестная ошибка!", Toast.LENGTH_SHORT).show()
+                    })
         )
     }
 

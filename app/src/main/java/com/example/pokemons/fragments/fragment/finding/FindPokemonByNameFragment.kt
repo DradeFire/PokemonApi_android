@@ -1,5 +1,6 @@
 package com.example.pokemons.fragments.fragment.finding
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -69,12 +70,12 @@ class FindPokemonByNameFragment @Inject constructor(): Fragment() {
                     PokemonEntity(
                         0,
                         tvPokemonName.text.toString(),
-                        tvHpPokemon.text.toString().toInt(),
-                        tvAttackPokemon.text.toString().toInt(),
-                        tvDefensePokemon.text.toString().toInt(),
-                        tvSpecialAttackPokemon.text.toString().toInt(),
-                        tvSpecialDefensePokemon.text.toString().toInt(),
-                        tvSpeedPokemon.text.toString().toInt(),
+                        tvHpPokemon.text.toString().substring(3) .toInt(),
+                        tvAttackPokemon.text.toString().substring(7).toInt(),
+                        tvDefensePokemon.text.toString().substring(8).toInt(),
+                        tvSpecialAttackPokemon.text.toString().substring(14).toInt(),
+                        tvSpecialDefensePokemon.text.toString().substring(15).toInt(),
+                        tvSpeedPokemon.text.toString().substring(6).toInt(),
                         listOfAbilities
                     )
                 )
@@ -83,20 +84,21 @@ class FindPokemonByNameFragment @Inject constructor(): Fragment() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        viewModel.myResponsePokemon.removeObservers(viewLifecycleOwner)
-    }
+//    override fun onPause() {
+//        super.onPause()
+//        viewModel.myResponsePokemon.removeObservers(viewLifecycleOwner)
+//    }
 
+    @SuppressLint("SetTextI18n")
     private fun bindViewPokemonItem(body: PokemonJsonModel) = with(binding.pokemonItemFindPokemonByName) {
         tvPokemonName.text = body.name
 
-        tvHpPokemon.text = body.stats[0].base_stat.toString()
-        tvAttackPokemon.text = body.stats[1].base_stat.toString()
-        tvDefensePokemon.text = body.stats[2].base_stat.toString()
-        tvSpecialAttackPokemon.text = body.stats[3].base_stat.toString()
-        tvSpecialDefensePokemon.text = body.stats[4].base_stat.toString()
-        tvSpeedPokemon.text = body.stats[5].base_stat.toString()
+        tvHpPokemon.text = "HP ${body.stats[0].base_stat}"
+        tvAttackPokemon.text = "Attack ${body.stats[1].base_stat}"
+        tvDefensePokemon.text = "Defense ${body.stats[2].base_stat}"
+        tvSpecialAttackPokemon.text = "SpecialAttack ${body.stats[3].base_stat}"
+        tvSpecialDefensePokemon.text = "SpecialDefense ${body.stats[4].base_stat}"
+        tvSpeedPokemon.text = "Speed ${body.stats[5].base_stat}"
 
         val adapter = AdapterSkills()
         rcViewSkills.adapter = adapter

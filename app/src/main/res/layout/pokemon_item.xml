@@ -7,10 +7,11 @@
     android:padding="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="#E64A19"
+        android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,15 +19,15 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             android:padding="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            app:layout_constraintVertical_bias="0.06">
+            app:layout_constraintTop_toBottomOf="@+id/tvPokemonName">
 
             <TextView
                 android:id="@+id/tvHpPokemon"
@@ -34,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Hp"
+                android:text="@string/hp"
                 android:textColor="#FFA000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -45,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Attack"
+                android:text="@string/attack"
                 android:textColor="#FFA000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -56,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Defense"
+                android:text="@string/defense"
                 android:textColor="#FFA000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="SpecialAttack"
+                android:text="@string/specialattack"
                 android:textColor="#FFA000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -78,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="SpecialDefense"
+                android:text="@string/specialdefense"
                 android:textColor="#FFA000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -88,8 +89,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
                 android:gravity="center"
-                android:text="Speed"
+                android:text="@string/speed"
                 android:textColor="#FFA000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -97,44 +99,39 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcViewSkills"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/tvSkillTitlePokemon"
             app:layout_constraintVertical_bias="0.05" />
 
         <TextView
             android:id="@+id/tvSkillTitlePokemon"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
             android:gravity="center"
             android:text="@string/abilities"
             android:textColor="#FFA000"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toEndOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/tvPokemonName" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/tvPokemonName" />
 
         <ImageButton
             android:id="@+id/btAddToFavorites"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="53dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#E64A19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -147,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="#FFA000"
             android:textSize="18sp"
             android:textStyle="bold"
